@@ -18,6 +18,7 @@ keywords = ["hypermodern", "template", "package"]
 [tool.poetry.dependencies]
 python = ">=3.8,<3.13"
 click = "^8.1.7"
+requests = "^2.32.3"
 
 
 [tool.poetry.scripts]
