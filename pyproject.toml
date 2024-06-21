@@ -1,3 +1,8 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
 [tool.poetry]
 name = "hypermodern-python"
 version = "0.1.0"
@@ -15,6 +20,5 @@ python = ">=3.8,<3.13"
 click = "^8.1.7"
 
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.scripts]
+hypermodern-python = "hypermodern_python.console:main"
