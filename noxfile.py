@@ -8,6 +8,7 @@ PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
 LINT_TARGETS = ["src/", "tests/", "noxfile.py"]
 
 
+# TODO: Do I need to keep this if I am using flake8-black?
 @nox.session(python="3.11")
 def black(session):
     args = session.posargs or LINT_TARGETS
@@ -22,7 +23,7 @@ def black(session):
 @nox.session(python="3.11")
 def lint(session):
     args = session.posargs or LINT_TARGETS
-    session.install("flake8")
+    session.install("flake8", "flake8-black")
     session.run("flake8", *args)
 
 
