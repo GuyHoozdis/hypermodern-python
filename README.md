@@ -143,4 +143,11 @@ TODO: Write steps to setup development environment.
 1. Verify environment setup
 
 
+# Resources
+
+1. [The Hypermodern Python Project articles][hypermodern-python]
+1. [The Hypermodern Python Project GitHub Repo]
+
+
 [hypermodern-python]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+[hypermodern-python-github]: https://github.com/cjolowicz/hypermodern-python
