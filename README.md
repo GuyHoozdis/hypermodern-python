@@ -132,6 +132,15 @@ nox > Session tests-3.11 was successful.
 ```
 
 
+### run the end-to-end tests
+
+The end-to-end tests are marked with `pytest.markers.e2e` and can be invoked by the command below.  By default tests with the `e2e` marker will not be executed.
+
+```bash
+$ nox -rs tests-3.11 -- -m e2e
+```
+
+
 ## Development Environment Setup
 
 TODO: Write steps to setup development environment.
@@ -146,7 +155,7 @@ TODO: Write steps to setup development environment.
 # Resources
 
 1. [The Hypermodern Python Project articles][hypermodern-python]
-1. [The Hypermodern Python Project GitHub Repo]
+1. [The Hypermodern Python Project GitHub Repo][hypermodern-python-github]
 
 
 [hypermodern-python]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
