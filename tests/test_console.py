@@ -45,3 +45,9 @@ def test_main_uses_specified_language(runner, mock_wikipedia_random_page):
     language = "pl"
     runner.invoke(console.main, [f"--language={language}"])
     mock_wikipedia_random_page.assert_called_once_with(language=language)
+
+
+@pytest.mark.e2e
+def test_main_succeeds_in_production_env(runner):
+    result = runner.invoke(console.main)
+    assert result.exit_code == 0
