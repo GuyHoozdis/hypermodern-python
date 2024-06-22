@@ -1,7 +1,7 @@
 import click.testing
 import pytest
 
-from hypermodern_python import console
+from hypermodern_python import console, wikipedia
 
 
 @pytest.fixture
@@ -31,7 +31,7 @@ def test_main_prints_title(runner, mock_reqeusts_get):
 
 def test_main_uses_en_wikipedia_org(runner, mock_reqeusts_get):
     _ = runner.invoke(console.main)
-    mock_reqeusts_get.assert_called_once_with(console.API_URL)
+    mock_reqeusts_get.assert_called_once_with(wikipedia.API_URL)
 
 
 def test_main_fails_on_request_error(runner, mock_reqeusts_get):
