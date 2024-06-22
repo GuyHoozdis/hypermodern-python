@@ -38,3 +38,4 @@ def test_main_fails_on_request_error(runner, mock_reqeusts_get):
     mock_reqeusts_get.side_effect = Exception("Boom")
     result = runner.invoke(console.main)
     assert result.exit_code == 1
+    assert "Boom" == str(result.exception)
