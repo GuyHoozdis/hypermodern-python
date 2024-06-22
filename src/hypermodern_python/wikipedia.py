@@ -12,7 +12,7 @@ def get_api_url_for(language):
 def random_page(language="en"):
     url = get_api_url_for(language=language)
     try:
-        with requests.get(url) as response:
+        with requests.get(url, timeout=10) as response:
             response.raise_for_status()
             return response.json()
     except requests.RequestException as error:
