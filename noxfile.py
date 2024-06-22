@@ -16,6 +16,7 @@ def black(session):
     session.run("black", *args)
 
 
+# TODO: Replace flake8-import-order with flake8-isort or pre-commit.
 # TODO: Does flake8 behave differently under different python versions?
 # - Should this be running for different python versions or can it be just one?
 # - Can I dynamically select the python version being used by the dev and just use that instead of hardcode?
@@ -23,8 +24,12 @@ def black(session):
 @nox.session(python="3.11")
 def lint(session):
     args = session.posargs or LINT_TARGETS
-    # TODO: Replace flake8-import-order with flake8-isort or pre-commit.
-    session.install("flake8", "flake8-black", "flake8-import-order")
+    session.install(
+        "flake8",
+        "flake8-black",
+        "flake8-bugbear",
+        "flake8-import-order",
+    )
     session.run("flake8", *args)
 
 
