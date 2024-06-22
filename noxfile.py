@@ -23,7 +23,8 @@ def black(session):
 @nox.session(python="3.11")
 def lint(session):
     args = session.posargs or LINT_TARGETS
-    session.install("flake8", "flake8-black")
+    # TODO: Replace flake8-import-order with flake8-isort or pre-commit.
+    session.install("flake8", "flake8-black", "flake8-import-order")
     session.run("flake8", *args)
 
 

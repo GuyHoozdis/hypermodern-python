@@ -1,9 +1,19 @@
 [flake8]
-select = BLK,C,E,F,W
+; BLK - Issues raised by Black
+; C - Issues rasied by mccabe (complexity)
+; F - Errors raised by pyflakes
+; W,E - Warnings and Errors reported by pycodestyle
+; I - Issues raised by flake8-import-order
+select = BLK,C,E,F,I,W
+
+; E203 - Whitespace before ':'
+; W503 - Line break before binary operator
+ignore = E203,W503
+
 max-line-length = 120
 max-complexity = 10
 
-# E203 - Whitespace before ':'
-# W503 - Line break before binary operator
-ignore = E203,W503
 
+; flake8-import-order
+application-import-names = hypermodern_python,tests
+import-order-style = google
