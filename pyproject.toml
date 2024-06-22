@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "hypermodern-python"
-version = "0.2.0"
+version = "0.3.0"
 description = "A template package based on The Hypermodern Project"
 authors = ["Guy Hoozdis <GuyHoozdis@users.noreply.github.com>"]
 readme = "README.md"
