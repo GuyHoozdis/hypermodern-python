@@ -38,7 +38,11 @@ source = ["src", "*/site-packages"]
 
 [tool.coverage.run]
 branch = true
-source = ["hypermodern_python"]
+# NOTE: The tests/ are included below for demonstration purposes.  It is a verification that the tests
+# modules and all of their contents are being executed as expected.
+#
+# TODO: Remove "tests" from source after project matures.
+source = ["hypermodern_python", "tests"]
 
 
 [tool.coverage.report]
