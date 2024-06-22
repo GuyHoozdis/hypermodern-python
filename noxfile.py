@@ -1,6 +1,8 @@
 # https://nox.thea.codes/en/stable/config.html#modifying-nox-s-behavior-in-the-noxfile
 import nox
 
+nox.options.sessions = "lint", "tests"
+
 
 PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
 LINT_TARGETS = ["src/", "tests/", "noxfile.py"]
