@@ -12,7 +12,7 @@ def test_random_page_raises_click_exception_on_requests_error(mock_requests_get)
 
 
 def test_random_page_uses_given_language(mock_requests_get):
-    language = 'de'
+    language = "de"
     wikipedia.random_page(language=language)
     url = wikipedia.get_api_url_for(language=language)
     mock_requests_get.assert_called_once_with(url)
