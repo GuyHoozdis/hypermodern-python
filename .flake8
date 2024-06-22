@@ -5,7 +5,8 @@
 ; W,E - Warnings and Errors reported by pycodestyle
 ; I - Issues raised by flake8-import-order
 ; B - Issues raised by flake8-bugbear, B9 are more opinionated
-select = B,B9,BLK,C,E,F,I,W
+; S - Issues raised by flake8-bandit (security)
+select = B,B9,BLK,C,E,F,I,S,W
 
 ; E203 - Whitespace before ':'
 ; W503 - Line break before binary operator
@@ -13,7 +14,7 @@ select = B,B9,BLK,C,E,F,I,W
 ;        Unlike E501, from pycodestyle, B950 only triggers if max-line-length is exceeded by 10% or
 ;        more.  Inspired by Raymond Hettinger's "Beyond PEP8" talk.
 ignore = E203,E501,W503
-
+per-file-ignores = tests/*:S101
 max-line-length = 120
 max-complexity = 10
 
