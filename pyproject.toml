@@ -3,6 +3,9 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
+# ======================================================================
+# Package Metadata and Dependencies
+# ======================================================================
 [tool.poetry]
 name = "hypermodern-python"
 version = "0.3.0"
@@ -33,10 +36,16 @@ ipython = [
 ipdb = "^0.13.13"
 
 
+# ======================================================================
+# CLI Entrypoints
+# ======================================================================
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 
 
+# ======================================================================
+# Tool Configuration: coverage
+# ======================================================================
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 
@@ -49,3 +58,9 @@ source = ["hypermodern_python"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
+
+
+# ======================================================================
+# Tool Configuration: flake8
+# ======================================================================
+# TODO: Move configuration here once flake8 supports pyproject.toml natively.
