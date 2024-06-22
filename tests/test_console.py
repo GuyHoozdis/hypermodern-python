@@ -29,6 +29,6 @@ def test_main_prints_title(runner, mock_reqeusts_get):
     assert "Guy Hoozdis" in result.output
 
 
-def test_main_invokes_requests_get(runner, mock_reqeusts_get):
-    result = runner.invoke(console.main)
-    assert mock_reqeusts_get.called
+def test_main_uses_en_wikipedia_org(runner, mock_reqeusts_get):
+    _ = runner.invoke(console.main)
+    mock_reqeusts_get.assert_called_once_with(console.API_URL)
