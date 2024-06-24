@@ -1,9 +1,11 @@
 from unittest.mock import Mock
 
-import pytest
-import requests
+# TODO: The configurations for black and flake8-black are inconsistent.  Also, I hate this choice
+# for import ordering.  Fix it.
 from click.testing import CliRunner
+import pytest
 from pytest_mock import MockerFixture
+import requests
 
 from hypermodern_python import console
 

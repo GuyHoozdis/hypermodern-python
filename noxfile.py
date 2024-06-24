@@ -21,6 +21,9 @@ def mypy(session):
 
 
 # TODO: Do I need to keep this if I am using flake8-black?
+# A: Maybe.  When flake8-black runs it may report an issue without enough detail to fix it.  In that
+#    case, I've been running `nox -s black` to resolve the issue.  However, there seems to be a
+#    difference in the configuration of the two.  I haven't looked into that yet.
 @nox.session(python="3.11")
 def black(session):
     args = session.posargs or SOURCE_CODE_TARGETS

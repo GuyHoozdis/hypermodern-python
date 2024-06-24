@@ -7,7 +7,9 @@ import requests
 from hypermodern_python import wikipedia
 
 
-def test_random_page_raises_click_exception_on_requests_error(mock_requests_get: mock.Mock) -> None:
+def test_random_page_raises_click_exception_on_requests_error(
+    mock_requests_get: mock.Mock,
+) -> None:
     mock_requests_get.side_effect = requests.RequestException
     with pytest.raises(click.ClickException):
         wikipedia.random_page()
