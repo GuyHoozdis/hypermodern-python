@@ -39,6 +39,7 @@ ipdb = "^0.13.13"
 # ======================================================================
 # CLI Entrypoints
 # ======================================================================
+mypy = "^1.10.0"
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 

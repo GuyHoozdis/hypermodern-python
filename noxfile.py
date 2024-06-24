@@ -1,17 +1,29 @@
 # https://nox.thea.codes/en/stable/config.html#modifying-nox-s-behavior-in-the-noxfile
 import nox
 
-nox.options.sessions = "lint", "tests"
+nox.options.sessions = "lint", "mypy", "tests"
 
 
 PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
-LINT_TARGETS = ["src/", "tests/", "./noxfile.py"]
+SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py"]
+
+
+@nox.session(python="3.11")
+def mypy(session):
+    args = session.posargs or SOURCE_CODE_TARGETS
+    session.install("mypy")
+
+    # XXX: Doing this to workaround the install_with_constraints issue.
+    session.run("poetry", "install", external=True)
+    session.install("types-requests")
+
+    session.run("mypy", *args)
 
 
 # TODO: Do I need to keep this if I am using flake8-black?
 @nox.session(python="3.11")
 def black(session):
-    args = session.posargs or LINT_TARGETS
+    args = session.posargs or SOURCE_CODE_TARGETS
     session.install("black")
     session.run("black", *args)
 
@@ -23,7 +35,7 @@ def black(session):
 # @nox.session(python=PYTHON_VERSIONS)
 @nox.session(python="3.11")
 def lint(session):
-    args = session.posargs or LINT_TARGETS
+    args = session.posargs or SOURCE_CODE_TARGETS
     session.install(
         "flake8",
         "flake8-bandit",
