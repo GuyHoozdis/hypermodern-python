@@ -11,6 +11,9 @@ PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
 SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py"]
 
 
+package = "hypermodern_python"
+
+
 # TODO: Return to reimplement this.  For now, just make note the signature.
 # def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
 #     pass
@@ -23,7 +26,7 @@ def typeguard(session: Session) -> None:
     session.run("poetry", "install", "--no-dev", external=True)
 
     session.install("pytest", "pytest-mock", "typeguard")
-    session.run("pytest", "--typeguard-packages=hypermodern_python", *args)
+    session.run("pytest", "--typeguard-packages={package}", *args)
 
 
 @nox.session(python="3.11")
@@ -79,3 +82,12 @@ def tests(session: Session) -> None:
     args = session.posargs or ["--cov", "-m", "not e2e"]
     session.run("poetry", "install", external=True)
     session.run("pytest", *args)
+
+
+@nox.session(python=PYTHON_VERSIONS)
+def xdoctests(session: Session) -> None:
+    """Run examples with xdoctest."""
+    args = session.posargs or ["all"]
+    session.run("poetry", "install", "--no-dev", external=True)
+    session.install("xdoctest")
+    session.run("python", "-m", "xdoctest", package, *args)
