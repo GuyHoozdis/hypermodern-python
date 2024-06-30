@@ -27,7 +27,7 @@ def test_main_succeeds(runner: CliRunner) -> None:
 
 
 # TODO: This is an integration test, not a unit test.
-def test_main_prints_title(runner: CliRunner) -> None:
+def test_main_prints_title(runner: CliRunner, mock_requests_get: Mock) -> None:
     result = runner.invoke(console.main)
     assert "Guy Hoozdis" in result.output
 
