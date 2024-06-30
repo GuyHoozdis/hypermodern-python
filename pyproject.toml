@@ -44,6 +44,7 @@ ipdb = "^0.13.13"
 mypy = "^1.10.0"
 typeguard = "^4.3.0"
 flake8-annotations = "^3.1.1"
+flake8-docstrings = "^1.7.0"
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 

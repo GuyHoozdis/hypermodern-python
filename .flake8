@@ -3,11 +3,13 @@
 ; B - Issues raised by flake8-bugbear, B9 are more opinionated
 ; BLK - Issues raised by Black
 ; C - Issues rasied by mccabe (complexity)
+; D - Issues raised by flake8-docstrings
 ; F - Errors raised by pyflakes
 ; I - Issues raised by flake8-import-order
 ; S - Issues raised by flake8-bandit (security)
 ; W,E - Warnings and Errors reported by pycodestyle
-select = ANN,B,B9,BLK,C,E,F,I,S,W
+select = ANN,B,B9,BLK,C,D,E,F,I,S,W
+docstring-convention = google
 
 
 ; E203 - Whitespace before ':'
