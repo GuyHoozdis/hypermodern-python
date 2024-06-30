@@ -1,5 +1,6 @@
 # https://nox.thea.codes/en/stable/config.html#modifying-nox-s-behavior-in-the-noxfile
 import nox
+from nox.sessions import Session
 
 nox.options.sessions = "lint", "mypy", "tests"
 
@@ -8,8 +9,13 @@ PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
 SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py"]
 
 
+# TODO: Return to reimplement this.  For now, just make note the signature.
+# def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
+#     pass
+
+
 @nox.session(python="3.11")
-def mypy(session):
+def mypy(session: Session) -> None:
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install("mypy")
 
@@ -25,7 +31,7 @@ def mypy(session):
 #    case, I've been running `nox -s black` to resolve the issue.  However, there seems to be a
 #    difference in the configuration of the two.  I haven't looked into that yet.
 @nox.session(python="3.11")
-def black(session):
+def black(session: Session) -> None:
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install("black")
     session.run("black", *args)
@@ -37,7 +43,7 @@ def black(session):
 # - Can I dynamically select the python version being used by the dev and just use that instead of hardcode?
 # @nox.session(python=PYTHON_VERSIONS)
 @nox.session(python="3.11")
-def lint(session):
+def lint(session: Session) -> None:
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install(
         "flake8",
@@ -50,7 +56,7 @@ def lint(session):
 
 
 @nox.session(python=PYTHON_VERSIONS)
-def tests(session):
+def tests(session: Session) -> None:
     args = session.posargs or ["--cov", "-m", "not e2e"]
     session.run("poetry", "install", external=True)
     session.run("pytest", *args)
