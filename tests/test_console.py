@@ -33,14 +33,18 @@ def test_main_prints_title(runner: CliRunner) -> None:
 
 
 # TODO: This is an integration test, not a unit test.
-def test_main_prints_message_on_request_error(runner: CliRunner, mock_requests_get: Mock) -> None:
+def test_main_prints_message_on_request_error(
+    runner: CliRunner, mock_requests_get: Mock
+) -> None:
     mock_requests_get.side_effect = requests.RequestException
     result = runner.invoke(console.main)
     assert "Error" in result.output
 
 
 # TODO: This is an integration test, not a unit test.
-def test_main_uses_specified_language(runner: CliRunner, mock_wikipedia_random_page: Mock) -> None:
+def test_main_uses_specified_language(
+    runner: CliRunner, mock_wikipedia_random_page: Mock
+) -> None:
     language = "pl"
     runner.invoke(console.main, [f"--language={language}"])
     mock_wikipedia_random_page.assert_called_once_with(language=language)
