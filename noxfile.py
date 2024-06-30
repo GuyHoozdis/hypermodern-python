@@ -15,6 +15,15 @@ SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py"]
 
 
 @nox.session(python="3.11")
+def typeguard(session: Session) -> None:
+    args = session.posargs or ["-m", "not e2e"]
+    session.run("poetry", "install", "--no-dev", external=True)
+
+    session.install("pytest", "pytest-mock", "typeguard")
+    session.run("pytest", "--typeguard-packages=hypermodern_python", *args)
+
+
+@nox.session(python="3.11")
 def mypy(session: Session) -> None:
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install("mypy")

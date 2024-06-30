@@ -31,3 +31,10 @@ def test_random_page_handles_validation_errors(mock_requests_get: mock.Mock) -> 
     mock_requests_get.return_value.__enter__.return_value.json.return_value = None
     with pytest.raises(click.ClickException):
         wikipedia.random_page()
+
+
+# XXX: For demonstration purposes.
+# def test_trigger_typeguard(mock_requests_get):
+#     import json
+#     data = json.loads('{ "language": 1 }')
+#     wikipedia.random_page(language=data["language"])
