@@ -4,7 +4,6 @@ from unittest import mock
 
 import click
 import pytest
-import requests
 
 from hypermodern_python import wikipedia
 

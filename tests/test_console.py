@@ -39,7 +39,7 @@ def test_main_prints_title(runner: CliRunner, mock_requests_get: Mock) -> None:
 
 
 # TODO: This is an integration test, not a unit test.
-def test_main_prints_message_on_request_error(
+def test_main_fails_on_request_error(
     runner: CliRunner, mock_requests_get: Mock
 ) -> None:
     """It exits with non-zero status code if the request fails."""
