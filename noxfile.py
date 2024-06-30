@@ -1,3 +1,4 @@
+"""Nox sessions."""
 # https://nox.thea.codes/en/stable/config.html#modifying-nox-s-behavior-in-the-noxfile
 import nox
 from nox.sessions import Session
@@ -16,6 +17,7 @@ SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py"]
 
 @nox.session(python="3.11")
 def typeguard(session: Session) -> None:
+    """Runtime type checking using Typeguard."""
     args = session.posargs or ["-m", "not e2e"]
     session.run("poetry", "install", "--no-dev", external=True)
 
@@ -25,6 +27,7 @@ def typeguard(session: Session) -> None:
 
 @nox.session(python="3.11")
 def mypy(session: Session) -> None:
+    """Static type checking using mypy."""
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install("mypy")
 
@@ -41,6 +44,7 @@ def mypy(session: Session) -> None:
 #    difference in the configuration of the two.  I haven't looked into that yet.
 @nox.session(python="3.11")
 def black(session: Session) -> None:
+    """Run black code formatter."""
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install("black")
     session.run("black", *args)
@@ -53,6 +57,7 @@ def black(session: Session) -> None:
 # @nox.session(python=PYTHON_VERSIONS)
 @nox.session(python="3.11")
 def lint(session: Session) -> None:
+    """Lint using flake8 and plugins."""
     args = session.posargs or SOURCE_CODE_TARGETS
     session.install(
         "flake8",
@@ -60,6 +65,7 @@ def lint(session: Session) -> None:
         "flake8-bandit",
         "flake8-black",
         "flake8-bugbear",
+        "flake8-docstrings",
         "flake8-import-order",
     )
     session.run("flake8", *args)
@@ -67,6 +73,7 @@ def lint(session: Session) -> None:
 
 @nox.session(python=PYTHON_VERSIONS)
 def tests(session: Session) -> None:
+    """Run the test suite."""
     args = session.posargs or ["--cov", "-m", "not e2e"]
     session.run("poetry", "install", external=True)
     session.run("pytest", *args)
