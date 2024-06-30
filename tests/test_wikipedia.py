@@ -20,3 +20,8 @@ def test_random_page_uses_given_language(mock_requests_get: mock.Mock) -> None:
     wikipedia.random_page(language=language)
     url = wikipedia.get_api_url_for(language=language)
     mock_requests_get.assert_called_once_with(url, timeout=mock.ANY)
+
+
+def test_random_page_returns_page(mock_requests_get: mock.Mock) -> None:
+    page = wikipedia.random_page()
+    assert isinstance(page, wikipedia.Page)
