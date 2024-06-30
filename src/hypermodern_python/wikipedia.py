@@ -1,4 +1,5 @@
 """Client for the Wikipedia REST API, version 1."""
+
 from dataclasses import dataclass
 
 import click
@@ -18,6 +19,7 @@ class Page:
         title: The title of the Wikipedia page article.
         extract: A plain text summary.
     """
+
     title: str
     extract: str
 
@@ -26,6 +28,16 @@ schema = desert.schema(Page, meta={"unknown": marshmallow.EXCLUDE})
 
 
 def get_api_url_for(language: str) -> str:
+    """Return the url.
+
+    Formats the Wikipedia API url to include the language subdomain.
+
+    Args:
+        language: The Wikipedia language edition.
+
+    Returns:
+        A URL to the Wikipedia API.
+    """
     return API_URL.format(language=language)
 
 

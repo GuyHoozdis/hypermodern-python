@@ -1,4 +1,5 @@
 """Nox sessions."""
+
 # https://nox.thea.codes/en/stable/config.html#modifying-nox-s-behavior-in-the-noxfile
 import nox
 from nox.sessions import Session
