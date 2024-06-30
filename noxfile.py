@@ -14,7 +14,7 @@ def mypy(session):
     session.install("mypy")
 
     # XXX: Doing this to workaround the install_with_constraints issue.
-    session.run("poetry", "install", external=True)
+    session.run("poetry", "install", "--no-root", external=True)
     session.install("types-requests")
 
     session.run("mypy", *args)
