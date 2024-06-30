@@ -4,7 +4,7 @@ import pytest
 from pytest_mock import MockerFixture
 
 
-def pytest_configure(config):
+def pytest_configure(config: pytest.Config) -> None:
     config.addinivalue_line("markers", "e2e: mark as end-to-end test.")
 
 
