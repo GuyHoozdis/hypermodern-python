@@ -1,12 +1,14 @@
 [flake8]
+; ANN - Issues raised by flake8-annotations
+; B - Issues raised by flake8-bugbear, B9 are more opinionated
 ; BLK - Issues raised by Black
 ; C - Issues rasied by mccabe (complexity)
 ; F - Errors raised by pyflakes
-; W,E - Warnings and Errors reported by pycodestyle
 ; I - Issues raised by flake8-import-order
-; B - Issues raised by flake8-bugbear, B9 are more opinionated
 ; S - Issues raised by flake8-bandit (security)
-select = B,B9,BLK,C,E,F,I,S,W
+; W,E - Warnings and Errors reported by pycodestyle
+select = ANN,B,B9,BLK,C,E,F,I,S,W
+
 
 ; E203 - Whitespace before ':'
 ; W503 - Line break before binary operator
