@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Any
 
 import click
@@ -7,11 +8,17 @@ import requests
 API_URL: str = "https://{language}.wikipedia.org/api/rest_v1/page/random/summary"
 
 
+@dataclass
+class Page:
+    title: str
+    extract: str
+
+
 def get_api_url_for(language: str) -> str:
     return API_URL.format(language=language)
 
 
-def random_page(language: str = "en") -> Any:
+def random_page(language: str = "en") -> Page:
     url = get_api_url_for(language=language)
     try:
         with requests.get(url, timeout=10) as response:
