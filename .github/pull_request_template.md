@@ -1,4 +1,4 @@
-# Why Are We Doing This
+# Why Are We Doing This?
 
 _The changelog already shows **what** changed.  Add context so we know **why** these changes are desirable._
 
