@@ -141,6 +141,13 @@ $ nox -rs tests-3.11 -- -m e2e
 ```
 
 
+### Build Documentation
+
+```bash
+$ nox -rs docs
+$ open docs/_build/index.html
+```
+
 ## Development Environment Setup
 
 TODO: Write steps to setup development environment.
