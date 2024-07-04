@@ -3,11 +3,14 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
-# ======================================================================
-# Package Metadata and Dependencies
-# ======================================================================
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+priority = "primary"
+
+
 [tool.poetry]
-name = "hypermodern-python"
+name = "hypermodern-guyhoozdis"
 version = "0.6.0"
 description = "A template package based on The Hypermodern Project"
 authors = ["Guy Hoozdis <GuyHoozdis@users.noreply.github.com>"]
@@ -43,22 +46,10 @@ sphinx = "*"
 sphinx-autodoc-typehints = "*"
 
 
-# ======================================================================
-# CLI Entrypoints
-# ======================================================================
 codecov = "^2.1.13"
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 
-
-# ======================================================================
-# Tool Configuration: coverage
-# ======================================================================
-
-[[tool.poetry.source]]
-name = "testpypi"
-url = "https://test.pypi.org/simple/"
-priority = "primary"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -72,9 +63,3 @@ source = ["hypermodern_python"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
-
-
-# ======================================================================
-# Tool Configuration: flake8
-# ======================================================================
-# TODO: Move configuration here once flake8 supports pyproject.toml natively.
