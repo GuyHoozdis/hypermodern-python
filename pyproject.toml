@@ -46,6 +46,7 @@ sphinx-autodoc-typehints = "*"
 # ======================================================================
 # CLI Entrypoints
 # ======================================================================
+codecov = "^2.1.13"
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 

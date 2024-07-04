@@ -103,3 +103,11 @@ def docs(session: Session) -> None:
     # then use the --only switch to install.
     session.run("poetry", "install", "--no-root", external=True)
     session.run("sphinx-build", "docs", "docs/_build")
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
+def coverage(session: Session) -> None:
+    """Upload coverage data."""
+    session.install("coverage[toml]", "codecov")
+    session.run("coverage", "xml", "--fail-under=0")
+    session.run("codecov", *session.posargs)
