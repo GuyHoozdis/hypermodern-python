@@ -4,7 +4,7 @@
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = "lint", "mypy", "tests", "xdoctests", "docs"
+nox.options.sessions = "lint", "mypy", "tests", "xdoctests"
 
 
 DEFAULT_PYTHON_VERSION = "3.11"
