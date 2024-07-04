@@ -11,7 +11,7 @@ priority = "explicit"
 
 [tool.poetry]
 name = "hypermodern-guyhoozdis"
-version = "0.6.2"
+version = "0.6.3"
 description = "A template package based on The Hypermodern Project"
 authors = ["Guy Hoozdis <GuyHoozdis@users.noreply.github.com>"]
 readme = "README.md"
