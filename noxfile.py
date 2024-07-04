@@ -4,7 +4,7 @@
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = "lint", "mypy", "tests"
+nox.options.sessions = "lint", "mypy", "tests", "xdoctests"
 
 
 PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
@@ -23,7 +23,7 @@ package = "hypermodern_python"
 def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
     args = session.posargs or ["-m", "not e2e"]
-    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("poetry", "install", "--only", "main", external=True)
 
     session.install("pytest", "pytest-mock", "typeguard")
     session.run("pytest", "--typeguard-packages={package}", *args)
@@ -88,6 +88,6 @@ def tests(session: Session) -> None:
 def xdoctests(session: Session) -> None:
     """Run examples with xdoctest."""
     args = session.posargs or ["all"]
-    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("poetry", "install", "--only", "main", external=True)
     session.install("xdoctest")
     session.run("python", "-m", "xdoctest", package, *args)

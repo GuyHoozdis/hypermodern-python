@@ -54,6 +54,7 @@ def get_api_url_for(language: str) -> str:
     return API_URL.format(language=language)
 
 
+# TODO: Use the locale module to detect the language configured on the user's system.
 def random_page(language: str = "en") -> Page:
     """Return a random page.
 
