@@ -1,10 +1,10 @@
-# hypermodern-python
+# The Hypermodern Python Project
 
 [![Tests](https://github.com/GuyHoozdis/hypermodern-python/workflows/Tests/badge.svg)](https://github.com/GuyHoozdis/hypermodern-python/actions?workflow=Tests)
 [![Codecov](https://codecov.io/gh/GuyHoozdis/hypermodern-python/branch/master/graph/badge.svg)](https://codecov.io/gh/GuyHoozdis/hypermodern-python)
 
 
-A template based on ["The Hypermodern Python Project"][hypermodern-python]
+A template based on ["The Hypermodern Python Project"][hypermodern-python].
 
 
 ## Quick Start

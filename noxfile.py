@@ -12,7 +12,7 @@ SUPPORTED_PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
 SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py", "docs/conf.py"]
 
 
-package = "hypermodern_python"
+package = "hypermodern_guyhoozdis"
 
 
 # TODO: Return to reimplement this.  For now, just make note the signature.

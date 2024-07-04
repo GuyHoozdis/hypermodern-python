@@ -25,5 +25,5 @@ max-complexity = 10
 
 
 ; flake8-import-order
-application-import-names = hypermodern_python,tests
+application-import-names = hypermodern_guyhoozdis,tests
 import-order-style = google
