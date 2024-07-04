@@ -4,11 +4,12 @@
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = "lint", "mypy", "tests", "xdoctests"
+nox.options.sessions = "lint", "mypy", "tests", "xdoctests", "docs"
 
 
-PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
-SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py"]
+DEFAULT_PYTHON_VERSION = "3.11"
+SUPPORTED_PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
+SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py", "docs/conf.py"]
 
 
 package = "hypermodern_python"
@@ -19,7 +20,7 @@ package = "hypermodern_python"
 #     pass
 
 
-@nox.session(python="3.11")
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
     args = session.posargs or ["-m", "not e2e"]
@@ -29,7 +30,7 @@ def typeguard(session: Session) -> None:
     session.run("pytest", "--typeguard-packages={package}", *args)
 
 
-@nox.session(python="3.11")
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def mypy(session: Session) -> None:
     """Static type checking using mypy."""
     args = session.posargs or SOURCE_CODE_TARGETS
@@ -46,7 +47,7 @@ def mypy(session: Session) -> None:
 # A: Maybe.  When flake8-black runs it may report an issue without enough detail to fix it.  In that
 #    case, I've been running `nox -s black` to resolve the issue.  However, there seems to be a
 #    difference in the configuration of the two.  I haven't looked into that yet.
-@nox.session(python="3.11")
+@nox.session(python=DEFAULT_PYTHON_VERSION)
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or SOURCE_CODE_TARGETS
@@ -76,7 +77,7 @@ def lint(session: Session) -> None:
     session.run("flake8", *args)
 
 
-@nox.session(python=PYTHON_VERSIONS)
+@nox.session(python=SUPPORTED_PYTHON_VERSIONS)
 def tests(session: Session) -> None:
     """Run the test suite."""
     args = session.posargs or ["--cov", "-m", "not e2e"]
@@ -85,10 +86,17 @@ def tests(session: Session) -> None:
 
 
 # Alternatively, this could be done as a pytest plugin.
-@nox.session(python=PYTHON_VERSIONS)
+@nox.session(python=SUPPORTED_PYTHON_VERSIONS)
 def xdoctests(session: Session) -> None:
     """Run examples with xdoctest."""
     args = session.posargs or ["all"]
     session.run("poetry", "install", "--only", "main", external=True)
     session.install("xdoctest")
     session.run("python", "-m", "xdoctest", package, *args)
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
+def docs(session: Session) -> None:
+    """Build the documentation."""
+    session.run("poetry", "install", external=True)
+    session.run("sphinx-build", "docs", "docs/_build")
