@@ -31,26 +31,21 @@ pytest = "^8.2.2"
 coverage = {extras = ["toml"], version = "^7.5.3"}
 pytest-cov = "^5.0.0"
 pytest-mock = "^3.14.0"
-ipython = [
-    {version = "^8.25.0", python = ">=3.10,<3.13"},
-    {version = "^7.31.1", python = ">=3.8,<3.10"},
-]
+ipython = "*"
 ipdb = "^0.13.13"
-sphinx = [
-    {version = "^7", python = ">=3.9,<3.13"},
-    {version = "^7", python = "<3.9"},
-]
-
-
-# ======================================================================
-# CLI Entrypoints
-# ======================================================================
 mypy = "^1.10.0"
 typeguard = "^4.3.0"
 flake8-annotations = "^3.1.1"
 flake8-docstrings = "^1.7.0"
 darglint = "^1.8.1"
 xdoctest = "^1.1.5"
+sphinx = "*"
+sphinx-autodoc-typehints = "*"
+
+
+# ======================================================================
+# CLI Entrypoints
+# ======================================================================
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 
