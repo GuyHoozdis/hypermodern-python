@@ -30,13 +30,26 @@ schema = desert.schema(Page, meta={"unknown": marshmallow.EXCLUDE})
 def get_api_url_for(language: str) -> str:
     """Return the url.
 
-    Formats the Wikipedia API url to include the language subdomain.
+    Formats the Wikipedia API url to include the language subdomain.  Wikipedia supports language
+    codes defined in ISO 693-1 and ISO 693-3.  This function does not validate the input is a
+    legitimate value - it only constructs the URL using the value provided.
 
     Args:
         language: The Wikipedia language edition.
 
     Returns:
         A URL to the Wikipedia API.
+
+    Example:
+        >>> from hypermodern_python import wikipedia
+        >>> from urllib.parse import urlparse
+        >>> language = "de"
+        >>> url = wikipedia.get_api_url_for(language)
+        >>> isinstance(url, str)
+        True
+        >>> parsed_url = urlparse(url)
+        >>> parsed_url.netloc.startswith(language)
+        True
     """
     return API_URL.format(language=language)
 
