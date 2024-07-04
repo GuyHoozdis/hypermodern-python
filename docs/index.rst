@@ -1,6 +1,13 @@
 The Hypermodern Python Project
 ==============================
 
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+
+   license
+
+
 My implementation of the
 `Hypermodern Python <https://https://cjolowicz.github.io/posts/hypermodern-python-01-setup/>`_
 project article series.
