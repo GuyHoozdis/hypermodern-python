@@ -8,7 +8,7 @@ build-backend = "poetry.core.masonry.api"
 # ======================================================================
 [tool.poetry]
 name = "hypermodern-python"
-version = "0.4.0"
+version = "0.5.0"
 description = "A template package based on The Hypermodern Project"
 authors = ["Guy Hoozdis <GuyHoozdis@users.noreply.github.com>"]
 readme = "README.md"
@@ -31,19 +31,21 @@ pytest = "^8.2.2"
 coverage = {extras = ["toml"], version = "^7.5.3"}
 pytest-cov = "^5.0.0"
 pytest-mock = "^3.14.0"
-ipython = [
-    {version = "^8.25.0", markers = "python_version >= '3.10' and python_version < '3.13'"},
-    {version = "^7.31.1", markers = "python_version >= '3.8' and python_version < '3.10'"},
-]
+ipython = "*"
 ipdb = "^0.13.13"
+mypy = "^1.10.0"
+typeguard = "^4.3.0"
+flake8-annotations = "^3.1.1"
+flake8-docstrings = "^1.7.0"
+darglint = "^1.8.1"
+xdoctest = "^1.1.5"
+sphinx = "*"
+sphinx-autodoc-typehints = "*"
 
 
 # ======================================================================
 # CLI Entrypoints
 # ======================================================================
-mypy = "^1.10.0"
-typeguard = "^4.3.0"
-flake8-annotations = "^3.1.1"
 [tool.poetry.scripts]
 hypermodern-python = "hypermodern_python.console:main"
 
