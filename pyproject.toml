@@ -54,6 +54,12 @@ hypermodern-python = "hypermodern_python.console:main"
 # ======================================================================
 # Tool Configuration: coverage
 # ======================================================================
+
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+priority = "primary"
+
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 
