@@ -36,6 +36,10 @@ ipython = [
     {version = "^7.31.1", markers = "python_version >= '3.8' and python_version < '3.10'"},
 ]
 ipdb = "^0.13.13"
+sphinx = [
+    {version = "^7", python = ">=3.9"},
+    {version = "^7", python = "<3.9"},
+]
 
 
 # ======================================================================
