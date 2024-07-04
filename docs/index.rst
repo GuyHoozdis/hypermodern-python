@@ -17,7 +17,7 @@ run this command in your terminal:
 
    $ hypermodern-python [OPTIONS]
 
-.. option:: -l <language>, --language <language>
+.. option:: -l/--language <language>
 
    The Wikipedia language edition,
    as identified by its subdomain on
