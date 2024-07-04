@@ -84,6 +84,7 @@ def tests(session: Session) -> None:
     session.run("pytest", *args)
 
 
+# Alternatively, this could be done as a pytest plugin.
 @nox.session(python=PYTHON_VERSIONS)
 def xdoctests(session: Session) -> None:
     """Run examples with xdoctest."""
