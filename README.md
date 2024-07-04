@@ -1,5 +1,8 @@
 # hypermodern-python
 
+[![Tests](https://github.com/GuyHoozdis/hypermodern-python/workflows/Tests/badge.svg)](https://github.com/GuyHoozdis/hypermodern-python/actions?workflow=Tests)
+
+
 A template based on ["The Hypermodern Python Project"][hypermodern-python]
 
 
