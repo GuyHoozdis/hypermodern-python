@@ -2,6 +2,7 @@
 
 [![Tests](https://github.com/GuyHoozdis/hypermodern-python/workflows/Tests/badge.svg)](https://github.com/GuyHoozdis/hypermodern-python/actions?workflow=Tests)
 [![Codecov](https://codecov.io/gh/GuyHoozdis/hypermodern-python/branch/master/graph/badge.svg)](https://codecov.io/gh/GuyHoozdis/hypermodern-python)
+[![PyPI](https://img.shields.io/pypi/v/hypermodern-guyhoozdis.svg)](https://pypi.org/project/hypermodern-guyhoozdis/)
 
 
 A template based on ["The Hypermodern Python Project"][hypermodern-python].
