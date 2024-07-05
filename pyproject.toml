@@ -5,7 +5,6 @@ build-backend = "poetry.core.masonry.api"
 
 [[tool.poetry.source]]
 name = "testpypi"
-# url = "https://test.pypi.org/simple/"
 url = "https://test.pypi.org/legacy/"
 priority = "explicit"
 
@@ -19,7 +18,8 @@ readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/guyhoozdis/hypermodern-python"
 repository = "https://github.com/guyhoozdis/hypermodern-python"
-keywords = ["hypermodern", "template", "package"]
+documentation = "https://hypermodern-guyhoozdis.readthedocs.io"
+keywords = ["hypermodern", "template", "package", "guyhoozdis"]
 
 
 [tool.poetry.dependencies]
