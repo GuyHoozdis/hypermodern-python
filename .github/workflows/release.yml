@@ -16,4 +16,4 @@ jobs:
     - run: pip install poetry==1.8.3
     - run: nox -s lint mypy tests-3.11 xdoctests-3.11
     - run: poetry build
-    - run: publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}
+    - run: poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}
