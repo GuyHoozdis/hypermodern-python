@@ -2,6 +2,18 @@ name: Tests
 on: push
 
 jobs:
+  verify-rtfd-requirements:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        architecture: x64
+    - run: pip install nox==2024.4.15
+    - run: pip install poetry==1.8.3
+    - run: nox --session rtfd
+
   tests:
     runs-on: ubuntu-latest
     strategy:
@@ -17,3 +29,4 @@ jobs:
     - run: pip install nox==2024.4.15
     - run: pip install poetry==1.8.3
     - run: nox -s tests-${{ matrix.python-version }} xdoctests-${{ matrix.python-version }}
+
