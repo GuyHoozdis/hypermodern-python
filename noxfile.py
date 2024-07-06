@@ -4,7 +4,10 @@
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = "lint", "mypy", "tests", "xdoctests"
+
+nox.options.sessions = "lint", "mypy", "tests", "xdoctests", "rtfd"
+nox.options.stop_on_first_error = True
+nox.options.error_on_external_run = True
 
 
 DEFAULT_PYTHON_VERSION = "3.11"
@@ -108,3 +111,24 @@ def coverage(session: Session) -> None:
     session.install("coverage[toml]", "codecov")
     session.run("coverage", "xml", "--fail-under=0")
     session.run("codecov", *session.posargs)
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
+def rtfd(session: Session) -> None:
+    """Verify docs/requirements.txt is in sync with the docs group in pyproject.toml."""
+    session.run(
+        "poetry",
+        "export",
+        "--format=requirements.txt",
+        "--only=docs",
+        "--output=docs/requirements.txt",
+        external=True,
+    )
+    session.run(
+        "git",
+        "diff",
+        "--exit-code",
+        "--name-status",
+        "docs/requirements.txt",
+        external=True,
+    )
