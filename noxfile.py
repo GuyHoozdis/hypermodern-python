@@ -95,7 +95,7 @@ def xdoctests(session: Session) -> None:
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def docs(session: Session) -> None:
     """Build the documentation."""
-    session.run("poetry", "install", "--with", "main,docs", external=True)
+    session.run("poetry", "install", "--without", "dev", "--with", "docs", external=True)
     session.run("sphinx-build", "docs", "docs/_build")
 
 
