@@ -34,15 +34,13 @@ def mypy(session: Session) -> None:
     session.run("mypy", *args)
 
 
-# TODO: Do I need to keep this if I am using flake8-black?
-# A: Maybe.  When flake8-black runs it may report an issue without enough detail to fix it.  In that
-#    case, I've been running `nox -s black` to resolve the issue.  However, there seems to be a
-#    difference in the configuration of the two.  I haven't looked into that yet.
+# When flake8-black runs it may report an issue without enough detail to fix it.  In that
+# case, I've been running `nox -s black` to resolve the issue.
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or SOURCE_CODE_TARGETS
-    session.install("black")
+    session.run("poetry", "install", "--only", "black", external=True)
     session.run("black", *args)
 
 
@@ -88,7 +86,7 @@ def xdoctests(session: Session) -> None:
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def docs(session: Session) -> None:
     """Build the documentation."""
-    session.run("poetry", "install", "--without", "dev", "--with", "docs", external=True)
+    session.run("poetry", "install", "--without=dev", "--with=docs", external=True)
     session.run("sphinx-build", "docs", "docs/_build")
 
 
