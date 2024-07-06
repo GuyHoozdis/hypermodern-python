@@ -47,8 +47,15 @@ codecov = "^2.1.13"
 
 
 [tool.poetry.group.docs.dependencies]
-sphinx = {version = "^7.3.7", python = "^3.9"}
-sphinx-autodoc-typehints = {version = "^2.2.2", python = "^3.9"}
+sphinx = [
+  {version = "^7.3.7", python = "^3.9"},
+  {version = "*", python = "<3.9"},
+]
+sphinx-autodoc-typehints = [
+  {version = "^2.2.2", python = "^3.9"},
+  {version = "*", python = "<3.9"},
+]
+furo = "^2024.5.6"
 
 
 [tool.poetry.scripts]

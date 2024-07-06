@@ -1,5 +1,5 @@
-The Hypermodern GuyHoozdis Project
-==================================
+The Hypermodern GuyHoozdis Experimental Python Project
+======================================================
 
 .. toctree::
    :hidden:
@@ -58,10 +58,7 @@ run this command in your terminal:
    $ pip install hypermodern-guyhoozdis
 
 
-Now you can use the CLI.
-
-
-The CLI can be executed natively...
+The CLI can be executed as an executable...
 
 .. code-block:: console
 
@@ -79,9 +76,29 @@ Alternatively, you can use the package in your own code.
 
 .. code-block:: python
 
+   >>> from collections import defaultdict
+   >>> from string import ascii_letters
    >>> from hypermodern_guyhoozdis import wikipedia
    >>> page = wikipedia.random_page()
    >>> page.title
    'VMI Keydets baseball'
-   >>> len(page.extract)
-   384
+   >>> histogram = defaultdict(int)
+   >>> character_stream = (c for c in page.extract if c in ascii_letters)
+   >>> for c in character_stream:
+   ...   histogram[c] += 1
+   ...
+   >>> for c in string.ascii_letters:
+   ...   print(c, "=" * histogram[c])
+   ...
+   a ======================================
+   b ======
+   c ======
+   d ==========
+   e ==================================
+   f ===
+   g =======
+   h ===========
+   i ==============================
+   j
+   k =====
+   # ... snip...

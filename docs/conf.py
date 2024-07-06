@@ -1,6 +1,6 @@
 """Sphinx configuration."""
 
-project = "hypermodern-python"
+project = "hypermodern-guyhoozdis"
 author = "Guy Hoozdis"
 copyright = f"2024, {author}"
 extensions = [
@@ -8,3 +8,4 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_autodoc_typehints",
 ]
+html_theme = "furo"
