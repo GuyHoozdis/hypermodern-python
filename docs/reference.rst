@@ -6,11 +6,11 @@ Reference
    :backlinks: none
 
 
-hypermodern_guyhoozdis.console
-------------------------------
+.. hypermodern_guyhoozdis.console
+.. ------------------------------
 
-.. automodule:: hypermodern_guyhoozdis.console
-   :members:
+.. .. automodule:: hypermodern_guyhoozdis.console
+..    :members:
 
 
 hypermodern_guyhoozdis.wikipedia
