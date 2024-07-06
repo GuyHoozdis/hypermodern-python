@@ -5,7 +5,7 @@ from unittest import mock
 import click
 import pytest
 
-from hypermodern_python import wikipedia
+from hypermodern_guyhoozdis import wikipedia
 
 
 def test_random_page_uses_given_language(mock_requests_get: mock.Mock) -> None:

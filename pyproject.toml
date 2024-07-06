@@ -3,19 +3,23 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
-# ======================================================================
-# Package Metadata and Dependencies
-# ======================================================================
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/legacy/"
+priority = "explicit"
+
+
 [tool.poetry]
-name = "hypermodern-python"
-version = "0.5.0"
+name = "hypermodern-guyhoozdis"
+version = "0.6.8"
 description = "A template package based on The Hypermodern Project"
 authors = ["Guy Hoozdis <GuyHoozdis@users.noreply.github.com>"]
 readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/guyhoozdis/hypermodern-python"
 repository = "https://github.com/guyhoozdis/hypermodern-python"
-keywords = ["hypermodern", "template", "package"]
+documentation = "https://hypermodern-guyhoozdis.readthedocs.io"
+keywords = ["hypermodern", "template", "package", "guyhoozdis"]
 
 
 [tool.poetry.dependencies]
@@ -31,7 +35,6 @@ pytest = "^8.2.2"
 coverage = {extras = ["toml"], version = "^7.5.3"}
 pytest-cov = "^5.0.0"
 pytest-mock = "^3.14.0"
-ipython = "*"
 ipdb = "^0.13.13"
 mypy = "^1.10.0"
 typeguard = "^4.3.0"
@@ -39,35 +42,25 @@ flake8-annotations = "^3.1.1"
 flake8-docstrings = "^1.7.0"
 darglint = "^1.8.1"
 xdoctest = "^1.1.5"
+ipython = "*"
 sphinx = "*"
 sphinx-autodoc-typehints = "*"
+codecov = "^2.1.13"
 
 
-# ======================================================================
-# CLI Entrypoints
-# ======================================================================
 [tool.poetry.scripts]
-hypermodern-python = "hypermodern_python.console:main"
+hypermodern-guyhoozdis = "hypermodern_guyhoozdis.console:main"
 
 
-# ======================================================================
-# Tool Configuration: coverage
-# ======================================================================
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 
 
 [tool.coverage.run]
 branch = true
-source = ["hypermodern_python"]
+source = ["hypermodern_guyhoozdis"]
 
 
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
-
-
-# ======================================================================
-# Tool Configuration: flake8
-# ======================================================================
-# TODO: Move configuration here once flake8 supports pyproject.toml natively.

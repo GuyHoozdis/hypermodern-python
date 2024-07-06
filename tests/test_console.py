@@ -9,7 +9,7 @@ import pytest
 from pytest_mock import MockerFixture
 import requests
 
-from hypermodern_python import console
+from hypermodern_guyhoozdis import console
 
 
 @pytest.fixture
@@ -21,7 +21,7 @@ def runner() -> CliRunner:
 @pytest.fixture
 def mock_wikipedia_random_page(mocker: MockerFixture) -> Mock:
     """Fixture for mocking wikipedia.random_page."""
-    return mocker.patch("hypermodern_python.wikipedia.random_page")
+    return mocker.patch("hypermodern_guyhoozdis.wikipedia.random_page")
 
 
 # TODO: This is an integration test, not a unit test.

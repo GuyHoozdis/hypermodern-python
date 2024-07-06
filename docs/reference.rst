@@ -6,15 +6,15 @@ Reference
    :backlinks: none
 
 
-hypermodern_python.console
---------------------------
+hypermodern_guyhoozdis.console
+------------------------------
 
-.. automodule:: hypermodern_python.console
+.. automodule:: hypermodern_guyhoozdis.console
    :members:
 
 
-hypermodern_python.wikipedia
-----------------------------
+hypermodern_guyhoozdis.wikipedia
+--------------------------------
 
-.. automodule:: hypermodern_python.wikipedia
+.. automodule:: hypermodern_guyhoozdis.wikipedia
    :members:

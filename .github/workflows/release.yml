@@ -1,0 +1,19 @@
+name: Release
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        architecture: x64
+    - run: pip install nox==2024.4.15
+    - run: pip install poetry==1.8.3
+    - run: nox -s lint mypy tests-3.11 xdoctests-3.11
+    - run: poetry build
+    - run: poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}

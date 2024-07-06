@@ -41,7 +41,7 @@ def get_api_url_for(language: str) -> str:
         A URL to the Wikipedia API.
 
     Example:
-        >>> from hypermodern_python import wikipedia
+        >>> from hypermodern_guyhoozdis import wikipedia
         >>> from urllib.parse import urlparse
         >>> language = "de"
         >>> url = wikipedia.get_api_url_for(language)
@@ -71,7 +71,7 @@ def random_page(language: str = "en") -> Page:
         ClickException: The HTTP request failed or the HTTP response contained an invalid body.
 
     Example:
-        >>> from hypermodern_python import wikipedia
+        >>> from hypermodern_guyhoozdis import wikipedia
         >>> page = wikipedia.random_page(language="en")
         >>> bool(page.title)
         True

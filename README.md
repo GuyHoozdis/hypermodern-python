@@ -1,6 +1,12 @@
-# hypermodern-python
+# The Hypermodern Python Project
 
-A template based on ["The Hypermodern Python Project"][hypermodern-python]
+[![Tests](https://github.com/GuyHoozdis/hypermodern-python/workflows/Tests/badge.svg)](https://github.com/GuyHoozdis/hypermodern-python/actions?workflow=Tests)
+[![Codecov](https://codecov.io/gh/GuyHoozdis/hypermodern-python/branch/master/graph/badge.svg)](https://codecov.io/gh/GuyHoozdis/hypermodern-python)
+[![PyPI](https://img.shields.io/pypi/v/hypermodern-guyhoozdis.svg)](https://pypi.org/project/hypermodern-guyhoozdis/)
+[![Read the Docs](https://readthedocs.org/projects/hypermodern-guyhoozdis/badge/)](https://hypermodern-guyhoozdis.readthedocs.io/)
+
+
+A template based on ["The Hypermodern Python Project"][hypermodern-python].
 
 
 ## Quick Start
@@ -11,7 +17,7 @@ required environment._
 Run the following commands from the root of the repo.
 
 
-### initialize the virtual environment
+### Initialize the virtual environment
 
 Construct poetry's virtual environment.
 
@@ -27,7 +33,7 @@ $ poetry install
 ```
 
 
-### run the full test suite
+### Run the full test suite
 
 ```bash
 $ nox
@@ -49,7 +55,7 @@ $ nox -r
 ```
 
 
-### run all tests for a single python version
+### Run all tests for a single python version
 
 List the available sessions with `-l/--list` and select one or more with the `-s/--session` switch.
 
@@ -73,7 +79,7 @@ nox > * tests-3.10: success
 ```
 
 
-### run all tests in a single module
+### Run all tests in a single module
 
 ```bash
 $ nox -rs tests-3.11 -- tests/test_console.py
@@ -88,7 +94,7 @@ nox > Session tests-3.11 was successful.
 ```
 
 
-### run a specific tests from a specific module
+### Run a specific tests from a specific module
 
 ```bash
 $ nox -rs tests-3.11 -- tests/test_console.py::test_main_fails_on_request_error
@@ -103,7 +109,7 @@ nox > Session tests-3.11 was successful.
 ```
 
 
-### run the debugger when a breakpoint is hit
+### Run the debugger when a breakpoint is hit
 
 This example is a demonstration of passing arbitrary arguments to `pytest` which is being run by `nox`, not an assertion that this is the best way to run the debugger.
 
@@ -132,7 +138,7 @@ nox > Session tests-3.11 was successful.
 ```
 
 
-### run the end-to-end tests
+### Run the end-to-end tests
 
 The end-to-end tests are marked with `pytest.markers.e2e` and can be invoked by the command below.  By default tests with the `e2e` marker will not be executed.
 
@@ -160,11 +166,45 @@ TODO: Write steps to setup development environment.
 1. Verify environment setup
 
 
+## Publish Package
+
+From the [Poetry docs][poetry-config-credentials]
+
+
+```
+$ poetry source add --priority explicit testpypi https://test.pypi.org/simple/
+$ poetry config pypi-token.testpypi <your-test-pypi-token>
+$ poetry config pypi-token.pypi <your-pypi-token>
+```
+
+Verify it is in the system keyring
+
+```
+$ keyring get poetry-repository-testpypi __token__
+pypi-llsijlsdjlsjlsij...
+
+$ keyring get poetry-repository-pypi __token__
+pypi-llsijlsdjlsjlsij...
+```
+
+Build and publish
+
+```
+$ poetry build
+$ poetry publish -r testpypi
+$ poetry publish
+```
+
+!!!: Publishing to testpypi is not working for me yet.  Publishing to regular PyPi does.  I'm not sure why yet.
+
+
 # Resources
 
 1. [The Hypermodern Python Project articles][hypermodern-python]
 1. [The Hypermodern Python Project GitHub Repo][hypermodern-python-github]
+1. [Poetry: Configuring Credentials][poetry-config-credentials]
 
 
 [hypermodern-python]: https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
 [hypermodern-python-github]: https://github.com/cjolowicz/hypermodern-python
+[poetry-config-credentials]: https://python-poetry.org/docs/repositories/#configuring-credentials

@@ -4,7 +4,7 @@
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = "lint", "mypy", "tests", "xdoctests", "docs"
+nox.options.sessions = "lint", "mypy", "tests", "xdoctests"
 
 
 DEFAULT_PYTHON_VERSION = "3.11"
@@ -12,7 +12,7 @@ SUPPORTED_PYTHON_VERSIONS = ["3.12", "3.11", "3.10", "3.9", "3.8"]
 SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py", "docs/conf.py"]
 
 
-package = "hypermodern_python"
+package = "hypermodern_guyhoozdis"
 
 
 # TODO: Return to reimplement this.  For now, just make note the signature.
@@ -103,3 +103,11 @@ def docs(session: Session) -> None:
     # then use the --only switch to install.
     session.run("poetry", "install", "--no-root", external=True)
     session.run("sphinx-build", "docs", "docs/_build")
+
+
+@nox.session(python=DEFAULT_PYTHON_VERSION)
+def coverage(session: Session) -> None:
+    """Upload coverage data."""
+    session.install("coverage[toml]", "codecov")
+    session.run("coverage", "xml", "--fail-under=0")
+    session.run("codecov", *session.posargs)
