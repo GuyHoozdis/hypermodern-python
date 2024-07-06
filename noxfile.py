@@ -22,9 +22,7 @@ package = "hypermodern_guyhoozdis"
 def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
     args = session.posargs or ["-m", "not e2e"]
-    session.run("poetry", "install", "--only", "main", external=True)
-
-    session.install("pytest", "pytest-mock", "typeguard")
+    session.run("poetry", "install", "--with", "mypy", external=True)
     session.run("pytest", "--typeguard-packages={package}", *args)
 
 
