@@ -93,7 +93,7 @@ def docs(session: Session) -> None:
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def coverage(session: Session) -> None:
     """Upload coverage data."""
-    session.install("coverage[toml]", "codecov")
+    tests(session)
     session.run("coverage", "xml", "--fail-under=0")
     session.run("codecov", *session.posargs)
 
