@@ -1,4 +1,4 @@
-name: Coverage
+name: Upload to Codecov
 on: push
 
 jobs:

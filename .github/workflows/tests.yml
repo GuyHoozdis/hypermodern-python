@@ -1,8 +1,9 @@
-name: Tests
+name: Code Quality Checks
 on: push
 
 jobs:
-  verify-rtfd-requirements:
+  rtfd:
+    name: Check docs/requirements.txt
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -14,12 +15,41 @@ jobs:
     - run: pip install poetry==1.8.3
     - run: nox --session rtfd
 
+  mypy:
+    runs-on: ubuntu-latest
+    name: Type Checkers
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        architecture: x64
+    - run: pip install nox==2024.4.15
+    - run: pip install poetry==1.8.3
+    - run: nox --session mypy typeguard
+
+  lint:
+    if: ${{ always() }}
+    needs: mypy
+    name: Linting and Style Checks
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        architecture: x64
+    - run: pip install nox==2024.4.15
+    - run: pip install poetry==1.8.3
+    - run: nox --session lint
+
   tests:
+    needs: [mypy, lint]
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.12", "3.11", "3.10", "3.9", "3.8"]
-    name: Python ${{ matrix.python-version }}
+    name: Python ${{ matrix.python-version }} Test Suites
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
@@ -29,4 +59,3 @@ jobs:
     - run: pip install nox==2024.4.15
     - run: pip install poetry==1.8.3
     - run: nox -s tests-${{ matrix.python-version }} xdoctests-${{ matrix.python-version }}
-
