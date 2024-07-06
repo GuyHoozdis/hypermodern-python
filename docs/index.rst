@@ -1,4 +1,4 @@
-The Hypermodern GuyHoozdis Python Project Extravaganza
+The Hypermodern GuyHoozdis Experimental Python Project
 ======================================================
 
 .. toctree::
