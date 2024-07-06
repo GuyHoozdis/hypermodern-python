@@ -1,4 +1,5 @@
 """Command-line interface."""
+
 # TODO: The documentation generated for this module in the reference.rst is not helpful.  Either
 # add some useful context or find a way to remove that from being displayed in the docs.
 
@@ -33,6 +34,5 @@ def main(language: str) -> int:
 if __name__ == "__main__":
     import sys
 
-    sys.exit(
-        main(sys.argv[1:])
-    )
+    rc = main(sys.argv[1:])
+    sys.exit(rc)

@@ -9,6 +9,5 @@ import sys
 from hypermodern_guyhoozdis import console
 
 
-sys.exit(
-    console.main(sys.argv[1:])
-)
+rc = console.main(sys.argv[1:])
+sys.exit(rc)

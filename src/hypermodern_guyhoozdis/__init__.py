@@ -1,6 +1,6 @@
 """The Hypermodern Python Project."""
 
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
 
 
 try:
