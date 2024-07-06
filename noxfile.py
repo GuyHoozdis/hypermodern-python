@@ -18,11 +18,6 @@ SOURCE_CODE_TARGETS = ["src/", "tests/", "./noxfile.py", "docs/conf.py"]
 package = "hypermodern_guyhoozdis"
 
 
-# TODO: Return to reimplement this.  For now, just make note the signature.
-# def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:
-#     pass
-
-
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
@@ -93,8 +88,7 @@ def tests(session: Session) -> None:
 def xdoctests(session: Session) -> None:
     """Run examples with xdoctest."""
     args = session.posargs or ["all"]
-    session.run("poetry", "install", "--only", "main", external=True)
-    session.install("xdoctest")
+    session.run("poetry", "install", external=True)
     session.run("python", "-m", "xdoctest", package, *args)
 
 

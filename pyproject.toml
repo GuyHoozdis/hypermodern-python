@@ -31,20 +31,21 @@ marshmallow = "^3.21.3"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.2.2"
-coverage = {extras = ["toml"], version = "^7.5.3"}
-pytest-cov = "^5.0.0"
-pytest-mock = "^3.14.0"
+ipython = "*"
 ipdb = "^0.13.13"
-mypy = "^1.10.0"
-typeguard = "^4.3.0"
+pytest = "^8.2.2"
+pytest-mock = "^3.14.0"
+pytest-cov = "^5.0.0"
+coverage = {extras = ["toml"], version = "^7.5.3"}
 flake8-annotations = "^3.1.1"
 flake8-docstrings = "^1.7.0"
 darglint = "^1.8.1"
 xdoctest = "^1.1.5"
-ipython = "*"
 codecov = "^2.1.13"
 
+
+[tool.poetry.group.docs]
+optional = true
 
 [tool.poetry.group.docs.dependencies]
 sphinx = [
@@ -56,6 +57,14 @@ sphinx-autodoc-typehints = [
   {version = "*", python = "<3.9"},
 ]
 furo = "^2024.5.6"
+
+
+[tool.poetry.group.mypy]
+optional = true
+
+[tool.poetry.group.mypy.dependencies]
+mypy = "^1.10.0"
+typeguard = "^4.3.0"
 
 
 [tool.poetry.scripts]
