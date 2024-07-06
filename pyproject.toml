@@ -43,9 +43,12 @@ flake8-docstrings = "^1.7.0"
 darglint = "^1.8.1"
 xdoctest = "^1.1.5"
 ipython = "*"
-sphinx = "*"
-sphinx-autodoc-typehints = "*"
 codecov = "^2.1.13"
+
+
+[tool.poetry.group.docs.dependencies]
+sphinx = {version = "^7.3.7", python = "^3.9"}
+sphinx-autodoc-typehints = {version = "^2.2.2", python = "^3.9"}
 
 
 [tool.poetry.scripts]

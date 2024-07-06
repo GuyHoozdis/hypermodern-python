@@ -98,10 +98,7 @@ def xdoctests(session: Session) -> None:
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def docs(session: Session) -> None:
     """Build the documentation."""
-    # TODO: This doesn't need the main dependencies nor most of the other dev dependencies.  Move
-    # the required packages sphinx and sphinx-autodoc-typehints into their own dependency group and
-    # then use the --only switch to install.
-    session.run("poetry", "install", "--no-root", external=True)
+    session.run("poetry", "install", "--with", "main,docs", external=True)
     session.run("sphinx-build", "docs", "docs/_build")
 
 
