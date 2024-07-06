@@ -11,7 +11,7 @@ priority = "explicit"
 
 [tool.poetry]
 name = "hypermodern-guyhoozdis"
-version = "0.6.9"
+version = "0.6.10"
 description = "A template package based on The Hypermodern Project"
 authors = ["Guy Hoozdis <GuyHoozdis@users.noreply.github.com>"]
 readme = "README.md"
@@ -59,8 +59,14 @@ source = ["src", "*/site-packages"]
 [tool.coverage.run]
 branch = true
 source = ["hypermodern_guyhoozdis"]
+omit = [
+  "__main__.py"
+]
 
 
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
+exclude_also = [
+  "__name__ == .__main__.:",
+]

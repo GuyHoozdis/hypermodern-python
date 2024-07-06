@@ -27,6 +27,7 @@ class Page:
 schema = desert.schema(Page, meta={"unknown": marshmallow.EXCLUDE})
 
 
+# TODO: If I made this private or protected it automatically be skipped by the documentation generation?
 def get_api_url_for(language: str) -> str:
     """Return the url.
 
