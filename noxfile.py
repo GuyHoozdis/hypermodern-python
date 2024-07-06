@@ -32,12 +32,7 @@ def typeguard(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Static type checking using mypy."""
     args = session.posargs or SOURCE_CODE_TARGETS
-    session.install("mypy")
-
-    # XXX: Doing this to workaround the install_with_constraints issue.
-    session.run("poetry", "install", "--no-root", external=True)
-    session.install("types-requests")
-
+    session.run("poetry", "install", "--with", "mypy", external=True)
     session.run("mypy", *args)
 
 
