@@ -22,7 +22,7 @@ package = "hypermodern_guyhoozdis"
 def typeguard(session: Session) -> None:
     """Runtime type checking using Typeguard."""
     args = session.posargs or ["-m", "not e2e"]
-    session.run("poetry", "install", "--with", "mypy", external=True)
+    session.run("poetry", "install", "--with=mypy", external=True)
     session.run("pytest", "--typeguard-packages={package}", *args)
 
 
@@ -30,7 +30,7 @@ def typeguard(session: Session) -> None:
 def mypy(session: Session) -> None:
     """Static type checking using mypy."""
     args = session.posargs or SOURCE_CODE_TARGETS
-    session.run("poetry", "install", "--with", "mypy", external=True)
+    session.run("poetry", "install", "--with=mypy", external=True)
     session.run("mypy", *args)
 
 
@@ -40,7 +40,7 @@ def mypy(session: Session) -> None:
 def black(session: Session) -> None:
     """Run black code formatter."""
     args = session.posargs or SOURCE_CODE_TARGETS
-    session.run("poetry", "install", "--only", "black", external=True)
+    session.run("poetry", "install", "--only=black", external=True)
     session.run("black", *args)
 
 
