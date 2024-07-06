@@ -37,9 +37,6 @@ pytest = "^8.2.2"
 pytest-mock = "^3.14.0"
 pytest-cov = "^5.0.0"
 coverage = {extras = ["toml"], version = "^7.5.3"}
-flake8-annotations = "^3.1.1"
-flake8-docstrings = "^1.7.0"
-darglint = "^1.8.1"
 xdoctest = "^1.1.5"
 codecov = "^2.1.13"
 
@@ -68,9 +65,26 @@ typeguard = "^4.3.0"
 types-requests = "^2.32.0.20240622"
 
 
+[tool.poetry.group.black]
+optional = true
 
 [tool.poetry.group.black.dependencies]
 black = "^24.4.2"
+
+
+[tool.poetry.group.lint]
+optional = true
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.1.0"
+flake8-annotations = "^3.1.1"
+flake8-docstrings = "^1.7.0"
+flake8-bandit = "^4.1.1"
+flake8-black = "^0.3.6"
+flake8-bugbear = "^24.4.26"
+flake8-import-order = "^0.18.2"
+darglint = "^1.8.1"
+
 
 [tool.poetry.scripts]
 hypermodern-guyhoozdis = "hypermodern_guyhoozdis.console:main"
